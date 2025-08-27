@@ -1,6 +1,8 @@
 package ku.cs.models;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +11,7 @@ class StudentListTest {
     private StudentList studentList;
 
     @BeforeEach
-    public void setUp() {
+    void init() {
         studentList = new StudentList();
     }
 
@@ -22,7 +24,7 @@ class StudentListTest {
 
     @Test
     public void testAddNewStudentWithScore() {
-        studentList.addNewStudent("002", "Bob", 85.0);
+        studentList.addNewStudent("002", "Bob", 85);
         Student s = studentList.getStudents().get(0);
         assertEquals("002|Bob|85.0", s.getId() + "|" + s.getName() + "|" + s.getScore());
     }
@@ -46,14 +48,14 @@ class StudentListTest {
     @Test
     public void testGiveScoreToId() {
         studentList.addNewStudent("007", "Frank");
-        studentList.giveScoreToId("007", 70.0);
+        studentList.giveScoreToId("007", 70);
         Student s = studentList.findStudentById("007");
         assertEquals(70.0, s.getScore());
     }
 
     @Test
     public void testViewGradeOfId() {
-        studentList.addNewStudent("008", "Grace", 92.0);
+        studentList.addNewStudent("008", "Grace", 92);
         String grade = studentList.viewGradeOfId("008");
         assertEquals("A", grade);
     }

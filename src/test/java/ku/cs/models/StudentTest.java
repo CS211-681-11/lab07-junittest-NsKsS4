@@ -9,7 +9,7 @@ class StudentTest {
     Student s;
     @BeforeEach
     void init(){
-        s = new Student("67XXXXXXXX","Test");
+        s = new Student("67XXXXXXXX","Test", 85);
     }
 
     @Test
@@ -34,21 +34,54 @@ class StudentTest {
         assertEquals("Four", s.getName());
     }
 
-
+    @Test
+    void testGrade() {
+        assertEquals("A", s.grade());
+    }
 
     @Test
-    void testIsId(){
+    void testIsId() {
         assertEquals(true, s.isId("67XXXXXXXX"));
     }
 
     @Test
-    void testContains(){
-        assertEquals(true, s.isNameContains("est"));
+    void testIsNameContains() {
+        assertEquals(false, s.isNameContains("len"));
     }
 
     @Test
-    void testConstructorWithoutScore(){
-        assertEquals("67XXXXXXXX|Test", s.getId() + "|" + s.getName());
+    void testGetId() {
+        assertEquals("67XXXXXXXX", s.getId());
+    }
+
+    @Test
+    void testGetName() {
+        assertEquals("Test", s.getName());
+    }
+
+    @Test
+    void testGetScore() {
+        assertEquals(85, s.getScore());
+    }
+
+    @Test
+    void testGetGrade() {
+        assertEquals("A", s.getGrade());
+    }
+
+    @Test
+    void testToString() {
+        assertEquals("{id: '67XXXXXXXX', name: 'Test', score: 85.0}", s.toString());
+    }
+
+    @Test
+    void testConstructorWithTwoArgs() {
+        assertEquals(85, s.getScore());
+    }
+
+    @Test
+    void testConstructorWithThreeArgs() {
+        assertEquals(85, s.getScore());
     }
 
 }
